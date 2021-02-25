@@ -14,6 +14,11 @@ namespace MailSender
         public MainWindow()
         {
             InitializeComponent();
-        }       
+        }
+
+        private void ExitMenuItem_OnClick(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
     }
 }
