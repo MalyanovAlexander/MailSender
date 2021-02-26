@@ -18,38 +18,15 @@ namespace MailSender.WPFTest
 
         private void SendButton_OnClick(object sender, RoutedEventArgs e)
         {
-            var host = "smtp.mail.ru";
-            var port = 25;
-
-            var user_name = UserNameEditor.Text;
+            var user_name = UserNameEditor.Text;            //Получаем логин и пароль с окна
             var password = PasswordEditor.SecurePassword;
+            var subject = MessageSubject.Text;
+            var text = MessageText.Text;
 
-            var msg = "Hello World " + DateTime.Now;
+            EmailSendServiceClass email = new EmailSendServiceClass(user_name, password, subject, text);   //Создаём экземпляр класса для отправки письма
+            email.SendMsg();                                                                //Отправляем письмо
 
-            using (SmtpClient client = new SmtpClient(host, port))
-            {
-                client.EnableSsl = true;
-                client.Credentials = new NetworkCredential(user_name, password);
-
-                using (var message = new MailMessage())
-                {
-                    message.From = new MailAddress("malyanov_91@mail.ru", "Ёж");
-                    message.To.Add(new MailAddress("malyanov_91@mail.ru"));
-                    message.Subject = "Заголовок письма от " + DateTime.Now;
-                    message.Body = msg;
-
-                    try
-                    {
-                        client.Send(message);
-                        MessageBox.Show("Почта успешно отправлена!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
-                    }
-                    catch (Exception error)
-                    {
-                        MessageBox.Show(error.Message, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-                        throw;
-                    }
-                }
-            }
+            
         }
     }
 }
