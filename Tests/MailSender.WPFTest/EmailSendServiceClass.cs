@@ -43,15 +43,15 @@ namespace MailSender.WPFTest
 
                     try
                     {
-                        client.Send(message);
-                        MessageBox.Show(MailServer.messageBoxSuccessText, MailServer.messageBoxSuccessCaption,
-                            MessageBoxButton.OK, MessageBoxImage.Information);
+                        client.Send(message);                        
+
+                        SendEndWindow sew = new SendEndWindow();
+                        sew.ShowDialog();
                     }
                     catch (Exception error)
                     {
-                        MessageBox.Show(error.Message, MailServer.messageBoxErrorCaption,
-                            MessageBoxButton.OK, MessageBoxImage.Error);
-                        throw;
+                        SendErrorWindow sew = new SendErrorWindow(error.Message);
+                        sew.ShowDialog();                        
                     }
                 }
             }
