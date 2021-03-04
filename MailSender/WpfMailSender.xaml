@@ -3,10 +3,100 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:local="clr-namespace:MailSender"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Создать"/>
+                <MenuItem Header="Открытьь"/>
+                <MenuItem Header="Сохранить"/>
+                <Separator/>
+                <MenuItem Name="ExitMenuItem" Header="Выход" Click="ExitMenuItem_Click"/>
+            </MenuItem>
+            <MenuItem Header="Сервис">
+                <MenuItem Header="Параметры" IsEnabled="False"/>
+            </MenuItem>
+            <MenuItem Header="Помощь">
+                <MenuItem Header="О программе"/>
+            </MenuItem>
+        </Menu>
+        <StatusBar DockPanel.Dock="Bottom">
+            <StatusBarItem >                
+                <TextBlock Text="Готов к труду и обороне!"/>
+            </StatusBarItem>
+            <StatusBarItem>
+                <ProgressBar Value="30" Width="30" Height="20"/>
+            </StatusBarItem>            
+        </StatusBar>
+        <TabControl>
+            <TabItem Header="Рассылка">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <ToolBarTray Grid.Row="0">
+                        <ToolBar>
+                            <Label MinWidth="85">Отправители</Label>
+                            <ComboBox MinWidth="75" MaxWidth="150">
+                                <ComboBoxItem>Отправитель 1</ComboBoxItem>
+                                <ComboBoxItem>Отправитель 2</ComboBoxItem>
+                                <ComboBoxItem>Отправитель 3</ComboBoxItem>                                
+                            </ComboBox>
+                            <Button ToolTip="Создать">
+                                <Image Source="Media\Create.png" Height="20"/>
+                            </Button>
+                            <Button ToolTip="Редактировать">
+                                <Image Source="Media\Edit.png" Height="20"/>
+                            </Button>
+                            <Button ToolTip="Удалить">
+                                <Image Source="media\Delete.png" Height="20"/>
+                            </Button>
+                        </ToolBar>
+                        <ToolBar Band="1">
+                            <Label MinWidth="85">Сервера</Label>
+                            <ComboBox MinWidth="75" MaxWidth="150">
+                                <ComboBoxItem>Сервер 1</ComboBoxItem>
+                                <ComboBoxItem>Сервер 2</ComboBoxItem>
+                                <ComboBoxItem>Сервер 3</ComboBoxItem>
+                            </ComboBox>
+                            <Button ToolTip="Создать">
+                                <fa:ImageAwesome Icon="Plus" Height="20" Foreground="Green"></fa:ImageAwesome>
+                            </Button>
+                            <Button ToolTip="Редактировать">
+                                <fa:ImageAwesome Icon="Edit" Height="20" Foreground="Orange"></fa:ImageAwesome>
+                            </Button>
+                            <Button ToolTip="Удалить">
+                                <fa:ImageAwesome Icon="Trash" Height="20" Foreground="Red"></fa:ImageAwesome>
+                            </Button>
+                        </ToolBar>
+                        <ToolBar>
+                            <Label MinWidth="85">Перейти в планировщик</Label>
+                            <Button ToolTip="Создать">
+                                <fa:ImageAwesome Icon="ClockOutline" Height="20" Foreground="DarkBlue"></fa:ImageAwesome>
+                            </Button>
+                                
+                        </ToolBar>
+                        <ToolBar Band="1">
+                            <Label MinWidth="85">Получатели</Label>
+                            <Button ToolTip="Создать">
+                                <fa:ImageAwesome Icon="Plus" Height="20" Foreground="Green"></fa:ImageAwesome>
+                            </Button>
+                            <Button ToolTip="Редактировать">
+                                <fa:ImageAwesome Icon="Edit" Height="20" Foreground="Orange"></fa:ImageAwesome>
+                            </Button>
+                            <Button ToolTip="Удалить">
+                                <fa:ImageAwesome Icon="Trash" Height="20" Foreground="Red"></fa:ImageAwesome>
+                            </Button>
+                        </ToolBar>
+                    </ToolBarTray>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Планировщик"></TabItem>
+            <TabItem Header="Письма"></TabItem>
+        </TabControl>
+    </DockPanel>
 </Window>

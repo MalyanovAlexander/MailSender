@@ -23,6 +23,16 @@ namespace MailSender
         public MainWindow()
         {
             InitializeComponent();
+        }        
+
+        /// <summary>
+        /// Закрыть приложение
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ExitMenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }
