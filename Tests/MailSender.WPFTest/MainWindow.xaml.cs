@@ -25,7 +25,6 @@ namespace MailSender.WPFTest
 
             EmailSendServiceClass email = new EmailSendServiceClass(user_name, password, subject, text);   //Создаём экземпляр класса для отправки письма
             email.SendMsg();                                                                               //Отправляем письмо
-              
         }
     }
 }

@@ -103,5 +103,11 @@
     <Resource Include="Media\Delete.png" />
     <Resource Include="Media\Edit.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MailSender.lib\MailSender.lib.csproj">
+      <Project>{87ec4313-2552-4d65-bcac-a74f86ade612}</Project>
+      <Name>MailSender.lib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
