@@ -6,7 +6,8 @@
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:local="clr-namespace:MailSender"
         xmlns:data="clr-namespace:MailSender.lib.Data;assembly=MailSender.lib"
-        xmlns:entities="clr-namespace:MailSender.lib.Entities;assembly=MailSender.lib"
+        xmlns:entities="clr-namespace:MailSender.lib.Entities;assembly=MailSender.lib" 
+        xmlns:db="clr-namespace:MailSender.lib.Data.LINQtoSQL;assembly=MailSender.lib"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <DockPanel>
@@ -36,6 +37,9 @@
         <TabControl>
             <TabItem Header="Рассылка">
                 <Grid>
+                    <Grid.Resources>
+                        <db:MailSenderDBDataContext x:Key="DataBase"/>
+                    </Grid.Resources>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition/>
@@ -81,8 +85,7 @@
                             <Label MinWidth="85">Перейти в планировщик</Label>
                             <Button ToolTip="Создать">
                                 <fa:ImageAwesome Icon="ClockOutline" Height="20" Foreground="DarkBlue"></fa:ImageAwesome>
-                            </Button>
-                                
+                            </Button>                                
                         </ToolBar>
                         <ToolBar Band="1">
                             <Label MinWidth="85">Получатели</Label>
@@ -97,11 +100,16 @@
                             </Button>
                         </ToolBar>
                     </ToolBarTray>
-                    <DataGrid Grid.Row="1" AutoGenerateColumns="False">
+                    <DataGrid Grid.Row="1" AutoGenerateColumns="False" 
+                              ItemsSource="{Binding Recipient, Source={StaticResource DataBase}}"
+                              GridLinesVisibility="Vertical" 
+                              AlternatingRowBackground="LightGray" 
+                              IsReadOnly="True" 
+                              HeadersVisibility="Column">
                         <DataGrid.Columns>
-                            <DataGridTextColumn Header="ID"/>
-                            <DataGridTextColumn Header="Имя"/>
-                            <DataGridTextColumn Header="Адрес" Width="*"/>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
+                            <DataGridTextColumn Header="Имя" Binding="{Binding Name}"/>
+                            <DataGridTextColumn Header="Адрес" Width="*" Binding="{Binding Adress}"/>
                         </DataGrid.Columns>
                     </DataGrid>
                 </Grid>
