@@ -1,4 +1,4 @@
-﻿<Window x:Class="MailSender.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,6 +8,7 @@
         xmlns:data="clr-namespace:MailSender.lib.Data;assembly=MailSender.lib"
         xmlns:entities="clr-namespace:MailSender.lib.Entities;assembly=MailSender.lib" 
         xmlns:db="clr-namespace:MailSender.lib.Data.LINQtoSQL;assembly=MailSender.lib"
+        xmlns:Controls="clr-namespace:MailSender.Controls" x:Class="MailSender.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <DockPanel>
@@ -17,7 +18,7 @@
                 <MenuItem Header="Открытьь"/>
                 <MenuItem Header="Сохранить"/>
                 <Separator/>
-                <MenuItem Name="ExitMenuItem" Header="Выход" Click="ExitMenuItem_Click"/>
+                <MenuItem x:Name="ExitMenuItem" Header="Выход" Click="ExitMenuItem_Click"/>
             </MenuItem>
             <MenuItem Header="Сервис">
                 <MenuItem Header="Параметры" IsEnabled="False"/>
@@ -27,14 +28,17 @@
             </MenuItem>
         </Menu>
         <StatusBar DockPanel.Dock="Bottom">
-            <StatusBarItem >                
+            <StatusBarItem>
+                <Controls:TabItemsSwitcher Width="120" LeftButtonClick="OnLeftButtonClick" RightButtonClick="OnRightButtonClick"/>
+            </StatusBarItem>
+            <StatusBarItem >
                 <TextBlock Text="Готов к труду и обороне!"/>
             </StatusBarItem>
             <StatusBarItem>
                 <ProgressBar Value="30" Width="30" Height="20"/>
-            </StatusBarItem>            
+            </StatusBarItem>
         </StatusBar>
-        <TabControl>
+        <TabControl Name="MainTabControl">
             <TabItem Header="Рассылка">
                 <Grid>
                     <Grid.Resources>
@@ -46,7 +50,7 @@
                     </Grid.RowDefinitions>
                     <ToolBarTray Grid.Row="0">
                         <ToolBar>
-                            <Label MinWidth="85">Отправители</Label>
+                            <Label MinWidth="85" Content="Отправители"/>
                             <ComboBox MinWidth="75" MaxWidth="150" ItemsSource="{x:Static data:TestData.Senders}" DisplayMemberPath="Name" SelectedIndex="0"/>
                             <Button ToolTip="Создать">
                                 <Image Source="Media\Create.png" Height="20"/>
@@ -59,7 +63,7 @@
                             </Button>
                         </ToolBar>
                         <ToolBar Band="1">
-                            <Label MinWidth="85">Сервера</Label>
+                            <Label MinWidth="85" Content="Сервера"/>
                             <ComboBox MinWidth="75" MaxWidth="150" ItemsSource="{x:Static data:TestData.Servers}" SelectedIndex="0">
                                 <ComboBox.ItemTemplate>
                                     <DataTemplate DataType="{x:Type entities:Server}">
@@ -72,31 +76,31 @@
                                 </ComboBox.ItemTemplate>
                             </ComboBox>
                             <Button ToolTip="Создать">
-                                <fa:ImageAwesome Icon="Plus" Height="20" Foreground="Green"></fa:ImageAwesome>
+                                <fa:ImageAwesome Icon="Plus" Height="20" Foreground="Green"/>
                             </Button>
                             <Button ToolTip="Редактировать">
-                                <fa:ImageAwesome Icon="Edit" Height="20" Foreground="Orange"></fa:ImageAwesome>
+                                <fa:ImageAwesome Icon="Edit" Height="20" Foreground="Orange"/>
                             </Button>
                             <Button ToolTip="Удалить">
-                                <fa:ImageAwesome Icon="Trash" Height="20" Foreground="Red"></fa:ImageAwesome>
+                                <fa:ImageAwesome Icon="Trash" Height="20" Foreground="Red"/>
                             </Button>
                         </ToolBar>
                         <ToolBar>
-                            <Label MinWidth="85">Перейти в планировщик</Label>
+                            <Label MinWidth="85" Content="Перейти в планировщик"/>
                             <Button ToolTip="Создать">
-                                <fa:ImageAwesome Icon="ClockOutline" Height="20" Foreground="DarkBlue"></fa:ImageAwesome>
-                            </Button>                                
+                                <fa:ImageAwesome Icon="ClockOutline" Height="20" Foreground="DarkBlue"/>
+                            </Button>
                         </ToolBar>
                         <ToolBar Band="1">
-                            <Label MinWidth="85">Получатели</Label>
+                            <Label MinWidth="85" Content="Получатели"/>
                             <Button ToolTip="Создать">
-                                <fa:ImageAwesome Icon="Plus" Height="20" Foreground="Green"></fa:ImageAwesome>
+                                <fa:ImageAwesome Icon="Plus" Height="20" Foreground="Green"/>
                             </Button>
                             <Button ToolTip="Редактировать">
-                                <fa:ImageAwesome Icon="Edit" Height="20" Foreground="Orange"></fa:ImageAwesome>
+                                <fa:ImageAwesome Icon="Edit" Height="20" Foreground="Orange"/>
                             </Button>
                             <Button ToolTip="Удалить">
-                                <fa:ImageAwesome Icon="Trash" Height="20" Foreground="Red"></fa:ImageAwesome>
+                                <fa:ImageAwesome Icon="Trash" Height="20" Foreground="Red"/>
                             </Button>
                         </ToolBar>
                     </ToolBarTray>
@@ -132,10 +136,10 @@
                                         <fa:ImageAwesome Height="18" Icon="Send" DockPanel.Dock="Right"/>
                                         <TextBlock Text="Отправить"/>
                                     </DockPanel>
-                                </Button>                                
+                                </Button>
                             </StackPanel>
                             <!--<DatePicker/>-->
-                            
+
                         </StackPanel>
                     </GroupBox>
                     <GroupBox Header="Задания">
@@ -148,7 +152,7 @@
                                         <TextBlock Text="Отправитель"/>
                                         <TextBlock Text="Получатели"/>
                                     </StackPanel>
-                                </GroupBox>                                
+                                </GroupBox>
                             </ListBoxItem>
                             <ListBoxItem HorizontalContentAlignment="Stretch">
                                 <GroupBox Header="Задание 2">
@@ -174,7 +178,7 @@
                     </GroupBox>
                 </DockPanel>
             </TabItem>
-            <TabItem Header="Письма"></TabItem>
+            <TabItem Header="Письма"/>
         </TabControl>
     </DockPanel>
 </Window>

@@ -34,5 +34,31 @@ namespace MailSender
         {
             Close();
         }
+
+        private void OnLeftButtonClick(object sender, EventArgs e)
+        {
+            if (!(sender is Controls.TabItemsSwitcher switcher)) return;
+            if (MainTabControl.SelectedIndex == 0) return;
+
+            MainTabControl.SelectedIndex--;
+            if (MainTabControl.SelectedIndex == 0)
+            {
+                switcher.LeftButtonVisible = false;
+            }
+        }
+
+        private void OnRightButtonClick(object sender, EventArgs e)
+        {
+            if (!(sender is Controls.TabItemsSwitcher switcher)) return;
+            var tabcount = MainTabControl.Items.Count;
+
+            if (MainTabControl.SelectedIndex == tabcount - 1) return;
+            MainTabControl.SelectedIndex++;
+            if (MainTabControl.SelectedIndex == MainTabControl.Items.Count-1)
+            {
+                switcher.RightButtonVisible = false;
+            }
+
+        }
     }
 }
