@@ -58,7 +58,40 @@ namespace MailSender
             {
                 switcher.RightButtonVisible = false;
             }
+        }
 
+        private void GoToPlanner_Click(object sender, RoutedEventArgs e)
+        {
+            MainTabControl.SelectedItem = Planner;
+        }
+
+        private void SendMSG_Click(object sender, RoutedEventArgs e)
+        {
+            var user_name = MailServer.adressFrom;                                                           //Получаем логин и пароль с окна
+            var password = "DerIgel1991";
+            var subject = MailServer.subject;
+            //var text = RichTB;
+            var text = new TextRange(RichTB.Document.ContentStart, RichTB.Document.ContentEnd).Text;
+
+            EmailSendServiceClass email = new EmailSendServiceClass(user_name, password, subject, text);   //Создаём экземпляр класса для отправки письма
+            if (text == "" || text =="\r\n")
+            {
+                MessageBox.Show("Письмо не заполнено");
+                MainTabControl.SelectedIndex = 2;
+                return;
+            }
+            email.SendMsg();
         }
     }
 }
+
+
+//6. По аналогии с тем, как создавали DLL из класса, который шифрует пароли, создать DLL из класса EmailSendServiceClass,
+//который занимается рассылкой писем. 
+
+
+//7. Посмотреть на ToolBarTray:
+//Некоторые панели ToolBar похожи, и из них можно сделать контрол и добавлять на ToolBar.
+//Задание: сделать контрол из панели «Выбрать отправителя» и добавить его в качестве контрола «Выбрать smtp-server».
+//У этого контрола должна быть возможность заменить текст у лейбла, должен функционировать комбобокс и все три кнопки. 
+

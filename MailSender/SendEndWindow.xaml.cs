@@ -12,27 +12,21 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace MailSender.WPFTest
+namespace MailSender
 {
     /// <summary>
-    /// Логика взаимодействия для SendErrorWindow.xaml
+    /// Логика взаимодействия для SendEndWindow.xaml
     /// </summary>
-    public partial class SendErrorWindow : Window
+    public partial class SendEndWindow : Window
     {
-        public SendErrorWindow()
-        {            
-            InitializeComponent();            
-        }
-
-        public SendErrorWindow(string message)
+        public SendEndWindow()
         {
-            InitializeComponent();            
-            tbSendError.Text = message.ToString();            
+            InitializeComponent();
         }
 
         private void btnOK_Click(object sender, RoutedEventArgs e)
         {
             Close();
-        }        
+        }
     }
 }

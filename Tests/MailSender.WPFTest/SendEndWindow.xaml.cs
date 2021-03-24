@@ -21,8 +21,7 @@ namespace MailSender.WPFTest
     {
         public SendEndWindow()
         {
-            InitializeComponent();
-            
+            InitializeComponent();            
         }
 
         private void btnOK_Click(object sender, RoutedEventArgs e)

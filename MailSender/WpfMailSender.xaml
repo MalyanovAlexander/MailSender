@@ -87,7 +87,7 @@
                         </ToolBar>
                         <ToolBar>
                             <Label MinWidth="85" Content="Перейти в планировщик"/>
-                            <Button ToolTip="Создать">
+                            <Button Name="GoToPlanner" ToolTip="Создать" VerticalAlignment="Top" Height="26" Click="GoToPlanner_Click">
                                 <fa:ImageAwesome Icon="ClockOutline" Height="20" Foreground="DarkBlue"/>
                             </Button>
                         </ToolBar>
@@ -118,12 +118,13 @@
                     </DataGrid>
                 </Grid>
             </TabItem>
-            <TabItem Header="Планировщик">
+            <TabItem Name="Planner" Header="Планировщик">
                 <DockPanel>
                     <GroupBox Header="Управление">
                         <StackPanel>
                             <TextBlock Text="Календарь"/>
                             <Calendar/>
+                            <DatePicker/>
                             <StackPanel Margin="5">
                                 <Button HorizontalContentAlignment="Stretch">
                                     <DockPanel Margin="20,0">
@@ -131,7 +132,7 @@
                                         <TextBlock Text="Запланировать"/>
                                     </DockPanel>
                                 </Button>
-                                <Button HorizontalContentAlignment="Stretch">
+                                <Button Name="SendMSG" HorizontalContentAlignment="Stretch" Click="SendMSG_Click">
                                     <DockPanel Margin="20,0">
                                         <fa:ImageAwesome Height="18" Icon="Send" DockPanel.Dock="Right"/>
                                         <TextBlock Text="Отправить"/>
@@ -178,7 +179,9 @@
                     </GroupBox>
                 </DockPanel>
             </TabItem>
-            <TabItem Header="Письма"/>
+            <TabItem Header="Письма">
+                <RichTextBox Name="RichTB"/>
+            </TabItem>            
         </TabControl>
     </DockPanel>
 </Window>

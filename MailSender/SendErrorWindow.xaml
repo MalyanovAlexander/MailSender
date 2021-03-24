@@ -1,9 +1,9 @@
-﻿<Window x:Class="MailSender.WPFTest.SendErrorWindow"
+﻿<Window x:Class="MailSender.SendErrorWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MailSender.WPFTest"
+        xmlns:local="clr-namespace:MailSender"
         mc:Ignorable="d"
         Title="SendErrorWindow" Height="344.673" Width="800" WindowStyle="None" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid Height="345">
