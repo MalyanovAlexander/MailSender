@@ -35,6 +35,11 @@ namespace MailSender
             Close();
         }
 
+        /// <summary>
+        /// Переход на вкладку слева
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnLeftButtonClick(object sender, EventArgs e)
         {
             if (!(sender is Controls.TabItemsSwitcher switcher)) return;
@@ -47,6 +52,11 @@ namespace MailSender
             }
         }
 
+        /// <summary>
+        /// Переход на вкладку справа
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnRightButtonClick(object sender, EventArgs e)
         {
             if (!(sender is Controls.TabItemsSwitcher switcher)) return;
@@ -60,21 +70,30 @@ namespace MailSender
             }
         }
 
+        /// <summary>
+        /// Переход на вкладку планировщика
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GoToPlanner_Click(object sender, RoutedEventArgs e)
         {
             MainTabControl.SelectedItem = Planner;
         }
 
+        /// <summary>
+        /// Отправить письмо
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SendMSG_Click(object sender, RoutedEventArgs e)
         {
             var user_name = MailServer.adressFrom;                                                           //Получаем логин и пароль с окна
             var password = "DerIgel1991";
-            var subject = MailServer.subject;
-            //var text = RichTB;
+            var subject = MailServer.subject;            
             var text = new TextRange(RichTB.Document.ContentStart, RichTB.Document.ContentEnd).Text;
 
             EmailSendServiceClass email = new EmailSendServiceClass(user_name, password, subject, text);   //Создаём экземпляр класса для отправки письма
-            if (text == "" || text =="\r\n")
+            if (text == "" || text =="\r\n")            //Проверяем заполненность RichTextBox
             {
                 MessageBox.Show("Письмо не заполнено");
                 MainTabControl.SelectedIndex = 2;
