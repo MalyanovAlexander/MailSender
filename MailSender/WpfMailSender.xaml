@@ -8,9 +8,10 @@
         xmlns:data="clr-namespace:MailSender.lib.Data;assembly=MailSender.lib"
         xmlns:entities="clr-namespace:MailSender.lib.Entities;assembly=MailSender.lib" 
         xmlns:db="clr-namespace:MailSender.lib.Data.LINQtoSQL;assembly=MailSender.lib"
-        xmlns:Controls="clr-namespace:MailSender.Controls" x:Class="MailSender.MainWindow"
+        xmlns:Controls="clr-namespace:MailSender.Controls" xmlns:view="clr-namespace:MailSender.View" x:Class="MailSender.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="{Binding WindowTitle}" Height="450" Width="800"
+        DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Файл">
@@ -40,10 +41,7 @@
         </StatusBar>
         <TabControl Name="MainTabControl">
             <TabItem Header="Рассылка">
-                <Grid>
-                    <Grid.Resources>
-                        <db:MailSenderDBDataContext x:Key="DataBase"/>
-                    </Grid.Resources>
+                <Grid>                    
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition/>
@@ -105,18 +103,21 @@
                             </Button>
                         </ToolBar>
                     </ToolBarTray>
-                    <DataGrid Grid.Row="1" AutoGenerateColumns="False" 
-                              ItemsSource="{Binding Recipient, Source={StaticResource DataBase}}"
+                    <Grid Grid.Row="1">
+                        <view:RecipientsView/>
+                    </Grid>
+                    <!--<DataGrid Grid.Row="1" AutoGenerateColumns="False"                               
                               GridLinesVisibility="Vertical" 
                               AlternatingRowBackground="LightGray" 
                               IsReadOnly="True" 
-                              HeadersVisibility="Column">
+                              HeadersVisibility="Column"
+                              ItemsSource="{Binding Recipients}">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
                             <DataGridTextColumn Header="Имя" Binding="{Binding Name}"/>
                             <DataGridTextColumn Header="Адрес" Width="*" Binding="{Binding Adress}"/>
                         </DataGrid.Columns>
-                    </DataGrid>
+                    </DataGrid>-->
                 </Grid>
             </TabItem>
             <TabItem Name="Planner" Header="Планировщик">
@@ -141,7 +142,6 @@
                                 </Button>
                             </StackPanel>
                             <!--<DatePicker/>-->
-
                         </StackPanel>
                     </GroupBox>
                     <GroupBox Header="Задания">
