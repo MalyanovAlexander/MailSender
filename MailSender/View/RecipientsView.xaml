@@ -13,13 +13,15 @@
             <TextBlock>Фильтр</TextBlock>
             <TextBox></TextBox>
         </DockPanel>
-        <Button DockPanel.Dock="Bottom" HorizontalAlignment="Center" Padding="30,10" Margin="0,7">Обновить</Button>
-            <DataGrid Grid.Row="1" AutoGenerateColumns="False"                               
-                              GridLinesVisibility="Vertical" 
-                              AlternatingRowBackground="LightGray" 
-                              IsReadOnly="True" 
-                              HeadersVisibility="Column"
-                              ItemsSource="{Binding Recipients}">
+        <Button DockPanel.Dock="Bottom" HorizontalAlignment="Center" Padding="30,10" Margin="0,7" 
+                Content="Обновить" Command="{Binding RefrechDataCommand}"></Button>
+            <DataGrid SelectedItem="{Binding SelectedRecipient}" 
+                      AutoGenerateColumns="False"                               
+                      GridLinesVisibility="Vertical" 
+                      AlternatingRowBackground="LightGray" 
+                      IsReadOnly="True" 
+                      HeadersVisibility="Column"
+                      ItemsSource="{Binding Recipients}">
             <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding Id}"/>
                     <DataGridTextColumn Header="Имя" Binding="{Binding Name}"/>

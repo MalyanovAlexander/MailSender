@@ -1,7 +1,9 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using MailSender.lib.Data.LINQtoSQL;
 using MailSender.lib.Services;
 using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace MailSender.ViewModel
 {
@@ -16,23 +18,57 @@ namespace MailSender.ViewModel
             set => Set(ref _WindowTitle, value);
         }
 
-        public ObservableCollection<Recipient> Recipients { get; } = new ObservableCollection<Recipient>();
+        private ObservableCollection<Recipient> _Recipients = new ObservableCollection<Recipient>();
+
+        public ObservableCollection<Recipient> Recipients
+        {
+            get => _Recipients;
+            set => Set(ref _Recipients, value);
+        }
+
+        #region Выбранный получатель
+        private Recipient _SelectedRecipient;
+
+        public Recipient SelectedRecipient
+        {
+            get => _SelectedRecipient;
+            set => Set(ref _SelectedRecipient, value);
+        }
+        #endregion
+
+        public ICommand RefrechDataCommand { get; }
+
+        public ICommand SaveChangesCommand { get; }
+
+
 
         public MainWindowViewModel(RecipientsDataProvider RecipientsProvider)
         {
             _RecipientsProvider = RecipientsProvider;
 
+            RefrechDataCommand = new RelayCommand(OnRefreshDataCommandExecuted, CanRefreshDataCommandExecute);
+            SaveChangesCommand = new RelayCommand(OnSaveChangesCommanExecuted);
+        }
+        private void OnSaveChangesCommanExecuted()
+        {
+            _RecipientsProvider.SaveChanges();
+        }
+
+        private bool CanRefreshDataCommandExecute() => true;
+
+        private void OnRefreshDataCommandExecuted()
+        {
             RefreshData();
         }
 
         private void RefreshData()
         {
-            var recipients = Recipients;
-            recipients.Clear();
+            var recipients = new ObservableCollection<Recipient>();            
             foreach (var recipient in _RecipientsProvider.GetAll())
             {
                 recipients.Add(recipient);
             }
+            Recipients = recipients;
         }
     }
 }
