@@ -2,6 +2,7 @@
 using GalaSoft.MvvmLight.Command;
 using MailSender.lib.Data.LINQtoSQL;
 using MailSender.lib.Services;
+using MailSender.lib.Services.Interfaces;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
@@ -9,7 +10,7 @@ namespace MailSender.ViewModel
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        private RecipientsDataProvider _RecipientsProvider;
+        private IRecipientsDataProvider _RecipientsProvider;
         private string _WindowTitle = "Рассыльщик почты v0.1";
 
         public string WindowTitle
@@ -42,7 +43,7 @@ namespace MailSender.ViewModel
 
 
 
-        public MainWindowViewModel(RecipientsDataProvider RecipientsProvider)
+        public MainWindowViewModel(IRecipientsDataProvider RecipientsProvider)
         {
             _RecipientsProvider = RecipientsProvider;
 

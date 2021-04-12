@@ -120,6 +120,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Commands\ApplicationCloseCommand.cs" />
     <Compile Include="Controls\ListController.xaml.cs">
       <DependentUpon>ListController.xaml</DependentUpon>
     </Compile>

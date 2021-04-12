@@ -30,10 +30,10 @@ namespace MailSender
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ExitMenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
+        //private void ExitMenuItem_Click(object sender, RoutedEventArgs e)
+        //{
+        //    Close();
+        //}
 
         /// <summary>
         /// Переход на вкладку слева

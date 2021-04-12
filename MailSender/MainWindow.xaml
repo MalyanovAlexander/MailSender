@@ -9,7 +9,7 @@
         xmlns:entities="clr-namespace:MailSender.lib.Entities;assembly=MailSender.lib"
         xmlns:db="clr-namespace:MailSender.lib.Data.LINQtoSQL;assembly=MailSender.lib"
         xmlns:Controls="clr-namespace:MailSender.Controls" 
-        xmlns:view="clr-namespace:MailSender.View"
+        xmlns:view="clr-namespace:MailSender.View" xmlns:commands="clr-namespace:MailSender.Commands"
         mc:Ignorable="d"
         Title="{Binding WindowTitle}" Height="450" Width="800"
         DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}">    
@@ -20,7 +20,11 @@
                 <MenuItem Header="Открытьь"/>
                 <MenuItem Header="Сохранить"/>
                 <Separator/>
-                <MenuItem x:Name="ExitMenuItem" Header="Выход" Click="ExitMenuItem_Click"/>
+                <MenuItem x:Name="ExitMenuItem" Header="Выход">
+                    <MenuItem.Command>
+                        <commands:ApplicationCloseCommand/>
+                    </MenuItem.Command>
+                </MenuItem>
             </MenuItem>
             <MenuItem Header="Сервис">
                 <MenuItem Header="Параметры" IsEnabled="False"/>

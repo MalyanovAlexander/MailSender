@@ -1,15 +1,16 @@
 ﻿using MailSender.lib.Data.LINQtoSQL;
+using MailSender.lib.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
 namespace MailSender.lib.Services
 {
-    public class RecipientsDataProvider
+    public class LINQ2SQLRecipientsDataProvider : IRecipientsDataProvider
     {
         private readonly MailSenderDBDataContext _db;
 
-        public RecipientsDataProvider(MailSenderDBDataContext db) { _db = db; }
+        public LINQ2SQLRecipientsDataProvider(MailSenderDBDataContext db) { _db = db; }
 
         public IEnumerable<Recipient> GetAll()
         {
