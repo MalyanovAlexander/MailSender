@@ -34,7 +34,6 @@ namespace MailSender.lib.Services
         {
             var db_item = GetByID(ID);
             return _Recipients.Remove(db_item);
-
         }
 
         public void SaveChanges(){}
