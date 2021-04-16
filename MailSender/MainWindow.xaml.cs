@@ -1,17 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace MailSender
 {
@@ -24,16 +13,6 @@ namespace MailSender
         {
             InitializeComponent();
         }        
-
-        /// <summary>
-        /// Закрыть приложение
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        //private void ExitMenuItem_Click(object sender, RoutedEventArgs e)
-        //{
-        //    Close();
-        //}
 
         /// <summary>
         /// Переход на вкладку слева
@@ -113,4 +92,6 @@ namespace MailSender
 //Некоторые панели ToolBar похожи, и из них можно сделать контрол и добавлять на ToolBar.
 //Задание: сделать контрол из панели «Выбрать отправителя» и добавить его в качестве контрола «Выбрать smtp-server».
 //У этого контрола должна быть возможность заменить текст у лейбла, должен функционировать комбобокс и все три кнопки. 
+
+//Реализовать работу поля Фильтр
 

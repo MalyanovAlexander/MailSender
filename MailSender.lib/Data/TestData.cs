@@ -11,9 +11,9 @@ namespace MailSender.lib.Data
     {
         public static List<Server> Servers { get; } = new List<Server>
         {
-            new Server{ID = 0, Name = "Yandex.ru", Adress = "smtp.yandex.ru", UserName = "username", Password = "password"},
-            new Server{ID = 1, Name = "Mail.ru", Adress = "smtp.mail.ru", UserName = "username", Password = "password"},
-            new Server{ID = 2, Name = "Gmail.com", Adress = "smtp.gmail.com", Port = 465, UserName = "username", Password = "password"}
+            new Server{ID = 0, Name = "Yandex.ru", Host = "smtp.yandex.ru", UserName = "username", Password = "password"},
+            new Server{ID = 1, Name = "Mail.ru", Host = "smtp.mail.ru", UserName = "username", Password = "password"},
+            new Server{ID = 2, Name = "Gmail.com", Host = "smtp.gmail.com", Port = 465, UserName = "username", Password = "password"}
         };
 
         public static List<Sender> Senders { get; } = new List<Sender>

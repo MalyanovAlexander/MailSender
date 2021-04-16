@@ -1,6 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
-using MailSender.lib.Data.LINQtoSQL;
+using MailSender.lib.Entities;
 using MailSender.lib.Services;
 using MailSender.lib.Services.Interfaces;
 using System.Collections.ObjectModel;
