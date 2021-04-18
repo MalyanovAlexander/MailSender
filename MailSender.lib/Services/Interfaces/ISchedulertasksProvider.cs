@@ -2,5 +2,5 @@
 
 namespace MailSender.lib.Services.Interfaces
 {
-    public interface ISchedulertasksProvider : IDataProvider<SchedulerTask> { }
+    public interface ISchedulerTasksProvider : IDataProvider<SchedulerTask> { }
 }

@@ -75,12 +75,19 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Services\InMemory\InDataProvider.cs" />
+    <Compile Include="Services\InMemory\InMemoryEmailsDataProvider.cs" />
     <Compile Include="Services\InMemory\InMemoryRecipientsDataProvider.cs" />
+    <Compile Include="Services\InMemory\InMemorySendersDataProvider.cs" />
+    <Compile Include="Services\InMemory\InMemoryServersDataProvider.cs" />
+    <Compile Include="Services\InMemory\InRecipientsListsDataProvider.cs" />
+    <Compile Include="Services\InMemory\InSchedulerTasksDataProvider.cs" />
     <Compile Include="Services\Interfaces\IDataProvider.cs" />
     <Compile Include="Services\Interfaces\IEmailsDataProvider.cs" />
+    <Compile Include="Services\Interfaces\IMailSenderService.cs" />
     <Compile Include="Services\Interfaces\IRecipientsDataProvider.cs" />
     <Compile Include="Services\Interfaces\IRecipientsListsDataProvider.cs" />
-    <Compile Include="Services\Interfaces\ISchedulertasksProvider.cs" />
+    <Compile Include="Services\Interfaces\ISchedulerTasksProvider.cs" />
     <Compile Include="Services\Interfaces\ISendersDataProvider.cs" />
     <Compile Include="Services\Interfaces\IServersDataProvider.cs" />
     <Compile Include="Services\LINQ2SQL\LINQ2SQLRecipientsDataProvider.cs" />
