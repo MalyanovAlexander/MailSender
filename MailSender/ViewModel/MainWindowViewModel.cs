@@ -43,9 +43,9 @@ namespace MailSender.ViewModel
 
 
 
-        public MainWindowViewModel(IRecipientsDataProvider RecipientsProvider, 
-            ISendersDataProvider SendersProvider, 
-            IServersDataProvider ServersProvider)
+        public MainWindowViewModel(IRecipientsDataProvider RecipientsProvider)
+            //ISendersDataProvider SenderProvider,
+            //IServersDataProvider ServerProvider)
         {
             _RecipientsProvider = RecipientsProvider;
 

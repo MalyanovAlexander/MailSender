@@ -19,13 +19,13 @@ namespace MailSender.ViewModel
 
             services.Register<MainWindowViewModel>();
 
-            //services.TryRegister<IRecipientsDataProvider, LINQ2SQLRecipientsDataProvider>();
-            //services.TryRegister(() => new MailSenderDBDataContext());
-
             services
-                .TryRegister<IRecipientsDataProvider, InMemoryRecipientsDataProvider>()
-                .TryRegister<ISendersDataProvider, InMemorySendersDataProvider>()
-                .TryRegister<IServersDataProvider, InMemoryServersDataProvider>();           
+                .TryRegister<IRecipientsDataProvider, LINQ2SQLRecipientsDataProvider>()
+                .TryRegister(() => new MailSenderDBDataContext());
+
+            //services.TryRegister<IRecipientsDataProvider, InMemoryRecipientsDataProvider>()
+            //.TryRegister<ISendersDataProvider, InMemorySendersDataProvider>()
+            //.TryRegister<IServersDataProvider, InMemoryServersDataProvider>();            
         }
 
         public MainWindowViewModel MainWindowModel => ServiceLocator.Current.GetInstance<MainWindowViewModel>();            

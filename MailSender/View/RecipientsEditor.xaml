@@ -3,16 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:MailSender.View"
+             xmlns:local="clr-namespace:MailSender.View" 
+             xmlns:validationrules="clr-namespace:MailSender.ValidationRules"
              mc:Ignorable="d" 
              DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}"
              d:DesignHeight="350" d:DesignWidth="250">
-    <Grid>
+    <Grid >
+        <!--Обработчик ошибок валидации Validation.Error="OnValidationError"-->
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
             <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
-            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>            
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -22,14 +23,39 @@
         <TextBlock Text="ID" Grid.Column="0" Grid.Row="0"/>
         <TextBlock Text="Имя" Grid.Column="0" Grid.Row="1"/>
         <TextBlock Text="Email" Grid.Column="0" Grid.Row="2"/>
-        <TextBlock Text="Описание" Grid.Column="0" Grid.Row="3"/>
 
-        <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding SelectedRecipient.Id}"/>
-        <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding SelectedRecipient.Name}"/>
-        <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding SelectedRecipient.Adress}"/>
-        <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding SelectedRecipient.Description}"/>
+        <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding SelectedRecipient.ID, NotifyOnValidationError=True, ValidatesOnDataErrors=True}" Margin="0,0,15,0"/>
+        <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding SelectedRecipient.Name, NotifyOnValidationError=True, ValidatesOnDataErrors=True, ValidatesOnExceptions=True}" Margin="0,0,15,0"/>
+        <TextBox Grid.Column="1" Grid.Row="2" Margin="0,0,15,0">
+            <Validation.ErrorTemplate>
+                <ControlTemplate>
+                    <DockPanel>
+                        <TextBlock DockPanel.Dock="Right" 
+                                   Text="!" 
+                                   FontSize="18" 
+                                   VerticalAlignment="Center" 
+                                   Foreground="Red" 
+                                   FontWeight="Bold" 
+                                   Margin="3,0" 
+                                   ToolTip="{Binding AdornedElement.(Validation.Errors)[0].ErrorContent, ElementName=AdornedElement}"/>
+                        <Border Padding="2" BorderBrush="Red" BorderThickness="3" CornerRadius="3">
+                            <AdornedElementPlaceholder Name="AdornedElement"/>
+                        </Border>
+                    </DockPanel>
+                </ControlTemplate>
+            </Validation.ErrorTemplate>
+            <TextBox.Text>
+                <Binding Path="SelectedRecipient.Adress" NotifyOnValidationError="True">
+                    <Binding.ValidationRules>
+                        <validationrules:RegExValidationRule Pattern="\w+@\w+.\w+" ErrorMessage="Неверный формат адреса электронной почты"/>
+                        <ExceptionValidationRule/>
+                        <DataErrorValidationRule/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>        
 
-        <UniformGrid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="4" VerticalAlignment="Top" HorizontalAlignment="Center" Rows="1" Margin="0,7,0,0">
+        <UniformGrid Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Center" Rows="1" Margin="0,7,0,0">
             <Button Padding="15,7" Margin="5">Создать</Button>
             <Button Padding="15,7" Margin="5" Command="{Binding SaveChangesCommand}">Сохранить</Button>
         </UniformGrid>

@@ -12,7 +12,7 @@
         xmlns:view="clr-namespace:MailSender.View" xmlns:commands="clr-namespace:MailSender.Commands"
         mc:Ignorable="d"
         Title="{Binding WindowTitle}" Height="450" Width="800"
-        DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}">    
+        DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}">
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="Файл">
@@ -46,12 +46,12 @@
         </StatusBar>
         <TabControl Name="MainTabControl">
             <TabItem Header="Рассылка">
-                <Grid>                    
+                <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
-                    <ToolBarTray Grid.Row="0">                        
+                    <ToolBarTray Grid.Row="0">
                         <ToolBar>
                             <!--<Controls:ListController Items="{x:Static data:TestData.Senders}"/>-->
                             <Label MinWidth="85" Content="Отправители"/>
@@ -73,7 +73,7 @@
                                     <DataTemplate DataType="{x:Type entities:Server}">
                                         <StackPanel Orientation="Horizontal">
                                             <TextBlock Text="{Binding Name}"/>
-                                            <TextBlock Text="{Binding Adress}" Margin="3,0,0,0" Opacity="0.6" ToolTip="{Binding Port}"/>
+                                            <TextBlock Text="{Binding Host}" Margin="3,0,0,0" Opacity="0.6" ToolTip="{Binding Port}"/>
                                             <!--<TextBlock Text="{Binding Port, StringFormat=:{0}}" Opacity="0.6"/>-->
                                         </StackPanel>
                                     </DataTemplate>
@@ -110,12 +110,13 @@
                     </ToolBarTray>
                     <Grid Grid.Row="1">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="7*"/>
-                            <ColumnDefinition Width="5*"/>
-                        </Grid.ColumnDefinitions>                        
-                        <view:RecipientsView Grid.Column="0" Margin="5"/>
-                        <view:RecipientsEditor Grid.Column="1" Margin="5"/>
-                        <GridSplitter Grid.Column="1" Width="4" VerticalAlignment="Stretch" HorizontalAlignment="Left" Background="Transparent"/>
+                            <ColumnDefinition Width="128*"/>
+                            <ColumnDefinition Width="331*"/>
+                            <ColumnDefinition Width="327*"/>
+                        </Grid.ColumnDefinitions>
+                        <view:RecipientsView Grid.Column="0" Margin="5" Grid.ColumnSpan="2"/>
+                        <view:RecipientsEditor Grid.Column="2" Margin="5"/>
+                        <GridSplitter Grid.Column="2" Width="4" VerticalAlignment="Stretch" HorizontalAlignment="Left" Background="Transparent"/>
                     </Grid>
                     <!--<DataGrid Grid.Row="1" AutoGenerateColumns="False"                               
                               GridLinesVisibility="Vertical" 
@@ -193,7 +194,7 @@
             </TabItem>
             <TabItem Header="Письма">
                 <RichTextBox Name="RichTB"/>
-            </TabItem>            
+            </TabItem>
         </TabControl>
     </DockPanel>
 </Window>
