@@ -3,15 +3,32 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:MailSender.View"
+             xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+             xmlns:local="clr-namespace:MailSender.View" xmlns:cmd="clr-namespace:MailSender.Commands"
              mc:Ignorable="d" 
              DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}"
              d:DesignHeight="450" d:DesignWidth="800">
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding RefrechDataCommand}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
     <DockPanel>
-        <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="10,7" FontSize="23">Получатели писем</TextBlock>
+        <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center" Margin="10,7" FontSize="23" Text="Получатели писем">
+            <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="MouseUp">
+                        <i:InvokeCommandAction>
+                            <i:InvokeCommandAction.Command>
+                                <cmd:ApplicationCloseCommand/>
+                            </i:InvokeCommandAction.Command>
+                        </i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+        </TextBlock>
         <DockPanel DockPanel.Dock="Top" Margin="5,0,5,3">
             <TextBlock>Фильтр</TextBlock>
-            <TextBox></TextBox>
+            <TextBox>                
+            </TextBox>
         </DockPanel>
         <Button DockPanel.Dock="Bottom" HorizontalAlignment="Center" Padding="30,10" Margin="0,7" 
                 Content="Обновить" Command="{Binding RefrechDataCommand}"></Button>
@@ -22,6 +39,18 @@
                       IsReadOnly="True" 
                       HeadersVisibility="Column"
                       ItemsSource="{Binding Recipients}">
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Меню 1">
+                        <MenuItem Header="Подменю 1"/>
+                        <MenuItem Header="Подменю 2"/>
+                        <MenuItem Header="Подменю 3"/>
+                        <MenuItem Header="Подменю 4"/>
+                    </MenuItem>
+                    <MenuItem Header="Меню 2"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            
             <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding ID}"/>
                     <DataGridTextColumn Header="Имя" Binding="{Binding Name}"/>
