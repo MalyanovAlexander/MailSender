@@ -23,7 +23,7 @@ namespace MailSender.ConsoleTest
                 while (_IsClockEnabled)
                 {
                     Console.Title = DateTime.Now.ToString("dd:MM:yyyy hh:mm:ss.ffff");
-                    Thread.Sleep(200);
+                    Thread.Sleep(100);
                 }
             }
             catch (ThreadAbortException e)
@@ -57,7 +57,7 @@ namespace MailSender.ConsoleTest
             printer_thread.Name = "Поток принтера";
             //printer_thread.Start(message);
 
-            var printer2_thread = new Thread(() => Printer2(message));
+            var printer2_thread = new Thread(() => Printer(message));
             printer2_thread.Name = "Поток принтера 2";
             //printer2_thread.Start();
 
@@ -69,7 +69,7 @@ namespace MailSender.ConsoleTest
             Console.ReadLine();
 
             _IsClockEnabled = false;
-            if (!clock_thread.Join(100))
+            if (!clock_thread.Join(200))
                 clock_thread.Interrupt();
 
             //clock_thread.Abort();
@@ -91,7 +91,7 @@ namespace MailSender.ConsoleTest
             Console.WriteLine("Поток {0} завершён", Thread.CurrentThread.ManagedThreadId);
         }
 
-        private static void Printer2(string message)
+        private static void Printer(string message)
         {
             CheckThread();
 

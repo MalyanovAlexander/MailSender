@@ -7,8 +7,10 @@ namespace MailSender.ConsoleTest
     {
         static void Main(string[] args)
         {
+            //ThreadTests.Start();
 
-            ThreadTests.Start();
+            SynchronizationTests.Start();
+
             Console.ReadLine();            
         }
     }
