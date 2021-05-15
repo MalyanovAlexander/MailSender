@@ -92,6 +92,7 @@
     <Compile Include="Services\Interfaces\IServersDataProvider.cs" />
     <Compile Include="Services\LINQ2SQL\LINQ2SQLRecipientsDataProvider.cs" />
     <Compile Include="Service\StringEncoder.cs" />
+    <Compile Include="Service\XMLSerializerPool.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
