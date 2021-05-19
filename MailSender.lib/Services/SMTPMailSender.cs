@@ -60,8 +60,7 @@ namespace MailSender.lib.Services
         public void SendParallel(EMail Message, Sender From, IEnumerable<Recipient> To)
         {
             foreach (var recipient in To)
-                ThreadPool.QueueUserWorkItem(_ => Send(Message, From, recipient));
-            
+                ThreadPool.QueueUserWorkItem(_ => Send(Message, From, recipient));            
         }
     }
 }
