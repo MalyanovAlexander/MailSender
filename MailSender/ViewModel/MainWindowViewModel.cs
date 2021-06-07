@@ -1,7 +1,6 @@
 ﻿using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using MailSender.lib.Entities;
-using MailSender.lib.Services;
 using MailSender.lib.Services.Interfaces;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
@@ -51,6 +50,12 @@ namespace MailSender.ViewModel
 
             RefrechDataCommand = new RelayCommand(OnRefreshDataCommandExecuted, CanRefreshDataCommandExecute);
             SaveChangesCommand = new RelayCommand(OnSaveChangesCommanExecuted);
+
+            if (IsInDesignMode)
+            {
+                Recipients.Add(new Recipient { ID = 1, Name = "Ivanov", Adress = "ivanov@mail.ru" });
+                Recipients.Add(new Recipient { ID = 1, Name = "Petrov", Adress = "petrov@yandex.ru" });
+            } 
         }
         private void OnSaveChangesCommanExecuted()
         {

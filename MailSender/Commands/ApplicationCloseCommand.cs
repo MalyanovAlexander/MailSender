@@ -10,7 +10,7 @@ namespace MailSender.Commands
 {
     public class ApplicationCloseCommand : ICommand
     {
-        public event EventHandler CanExecuteChanged;        
+        public event EventHandler CanExecuteChanged;
 
         public bool CanExecute(object parameter) => true;
 

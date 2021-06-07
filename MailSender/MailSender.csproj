@@ -96,6 +96,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Resources\Converters.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="SendEndWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -127,6 +131,7 @@
     <Compile Include="Controls\TabItemsSwitcher.xaml.cs">
       <DependentUpon>TabItemsSwitcher.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\DebugConverter.cs" />
     <Compile Include="EmailSendServiceClass.cs" />
     <Compile Include="MailServer.cs" />
     <Compile Include="SendEndWindow.xaml.cs">

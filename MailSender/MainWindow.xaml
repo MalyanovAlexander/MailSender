@@ -92,8 +92,9 @@
                         <ToolBar>
                             <Label MinWidth="85" Content="Перейти в планировщик"/>
                             <Button Name="GoToPlanner" ToolTip="Создать" VerticalAlignment="Top" Height="26" Click="GoToPlanner_Click">
-                                <fa:ImageAwesome Icon="ClockOutline" Height="20" Foreground="DarkBlue"/>
+                                <fa:ImageAwesome Icon="ClockOutline" Height="20" Foreground="DarkBlue"/>                                
                             </Button>
+                            <TextBlock Text="{Binding Recipients[0].Name}"/>
                         </ToolBar>
                         <ToolBar Band="1">
                             <Label MinWidth="85" Content="Получатели"/>
