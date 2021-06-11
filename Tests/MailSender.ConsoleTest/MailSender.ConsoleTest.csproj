@@ -58,9 +58,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsyncAwaitTests.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SynchronizationTests.cs" />
+    <Compile Include="TaskTests.cs" />
     <Compile Include="ThreadPool.cs" />
     <Compile Include="ThreadTests.cs" />
     <Compile Include="TPLTests.cs" />
