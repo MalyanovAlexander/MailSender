@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace MailSender.ConsoleTest
 {
@@ -80,8 +81,7 @@ namespace MailSender.ConsoleTest
             //Console.WriteLine("Total messages lengths = {0}", total_length);
 
             #endregion
-
-
+           
             Console.ReadLine();            
         }
 

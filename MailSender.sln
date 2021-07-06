@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailSender.lib.Tests", "Tes
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homework 5.1", "Homework 5.1\Homework 5.1.csproj", "{71B183A3-E320-4414-A7D2-A25445DDF7B9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Homework 6.1", "Homework 6.1\Homework 6.1.csproj", "{8E2FB20A-B19A-4131-84FC-14681A9284C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{71B183A3-E320-4414-A7D2-A25445DDF7B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71B183A3-E320-4414-A7D2-A25445DDF7B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71B183A3-E320-4414-A7D2-A25445DDF7B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E2FB20A-B19A-4131-84FC-14681A9284C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E2FB20A-B19A-4131-84FC-14681A9284C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E2FB20A-B19A-4131-84FC-14681A9284C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E2FB20A-B19A-4131-84FC-14681A9284C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -56,6 +62,7 @@ Global
 		{C84ECB40-701B-49DF-A6CF-FF946BF4CE9E} = {968A4F75-4B31-4025-9D4B-596F5506ED7E}
 		{E5F6E4D9-1A92-4621-A643-F91205C1EAD0} = {968A4F75-4B31-4025-9D4B-596F5506ED7E}
 		{71B183A3-E320-4414-A7D2-A25445DDF7B9} = {968A4F75-4B31-4025-9D4B-596F5506ED7E}
+		{8E2FB20A-B19A-4131-84FC-14681A9284C0} = {968A4F75-4B31-4025-9D4B-596F5506ED7E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5AD7C5D7-2721-4BC8-AC40-31FF98588706}
