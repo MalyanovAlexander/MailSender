@@ -11,7 +11,9 @@ namespace MailSender.ConsoleTest2.Data
 {
     public class SongsDB : DbContext
     {
+        public DbSet<Track> Tracks { get; set; }
 
+        public DbSet<Artist> Artists { get; set; }
     }
 
     [Table("Track")]
