@@ -1,6 +1,7 @@
 ﻿using MailSender.ConsoleTest2.Data;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,31 @@ namespace MailSender.ConsoleTest2
     {
         static void Main(string[] args)
         {
+            using (var db = new SongsDB())
+            {
+                db.Database.Log = msg => Console.WriteLine("EF: {0}\r\n---------------", msg);
+                var bad_artists = db.Artists
+                    .Where(a => a.Name.EndsWith("2"))
+                    .Include(a => a.Tracks);
+
+                foreach (var bad_artist in bad_artists)  //Include(a => a.Tracks) - требование о загрузке данных из связанной таблицы
+                {
+                    bad_artist.Name = $"{bad_artist.Name} - Bad";
+
+                    for (int i = 1; i < 10; i++)
+                        bad_artist.Tracks.Add(new Track
+                        {
+                            Name = $"Bad track {i+1} from bad_artist.Name"
+                        });                    
+                }
+
+                Console.ReadLine();
+                Console.Clear();
+                db.SaveChanges();
+            }
+
+            Console.ReadLine();
+
             using (var db = new SongsDB())
             {
                 //db.Database.Log = msg => Console.WriteLine("EF: {0}\r\n---------------", msg);
