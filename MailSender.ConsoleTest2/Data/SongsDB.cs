@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace MailSender.ConsoleTest2.Data
 {
+    //В консоли диспетчера пакетов: Update-Database -Verbose
+
     public class SongsDB : DbContext
     {
         public SongsDB(string ConnectionString) : base(ConnectionString) { }
