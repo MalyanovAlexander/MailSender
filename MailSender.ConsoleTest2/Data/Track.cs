@@ -1,4 +1,6 @@
-﻿using System.ComponentModel;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -13,19 +15,13 @@ namespace MailSender.ConsoleTest2.Data
         [Required]
         public string Name { get; set; }
 
-        public int Length { get; set; }
-
-        [DefaultValue(typeof(TrackStyle), "None")]
-        public TrackStyle? Style { get; set; }
+        public int Length { get; set; }        
 
         //public int ArtistId { get; set; }
 
         //[ForeignKey(nameof(ArtistId))]
         public virtual Artist Artist { get; set; }
-    }
 
-    public enum TrackStyle : byte
-    {
-        None, Pop, Raggy, Metal, Rock, Classic
+        public virtual ICollection<Album> Albums { get; set; }
     }
 }

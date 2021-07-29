@@ -55,6 +55,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\Album.cs" />
     <Compile Include="Data\Artist.cs" />
     <Compile Include="Data\Migrations\202107281918098_Initial.cs" />
     <Compile Include="Data\Migrations\202107281918098_Initial.designer.cs">
@@ -63,6 +64,10 @@
     <Compile Include="Data\Migrations\202107281939175_TrackStyleAdded.cs" />
     <Compile Include="Data\Migrations\202107281939175_TrackStyleAdded.designer.cs">
       <DependentUpon>202107281939175_TrackStyleAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data\Migrations\202107292036244_AlbumAddedStyleRemovedFromTrack.cs" />
+    <Compile Include="Data\Migrations\202107292036244_AlbumAddedStyleRemovedFromTrack.designer.cs">
+      <DependentUpon>202107292036244_AlbumAddedStyleRemovedFromTrack.cs</DependentUpon>
     </Compile>
     <Compile Include="Data\Migrations\Configuration.cs" />
     <Compile Include="Data\SongsDB.cs" />
@@ -83,6 +88,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Data\Migrations\202107281939175_TrackStyleAdded.resx">
       <DependentUpon>202107281939175_TrackStyleAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Data\Migrations\202107292036244_AlbumAddedStyleRemovedFromTrack.resx">
+      <DependentUpon>202107292036244_AlbumAddedStyleRemovedFromTrack.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

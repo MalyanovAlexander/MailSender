@@ -17,5 +17,7 @@ namespace MailSender.ConsoleTest2.Data
         public DbSet<Track> Tracks { get; set; }
 
         public DbSet<Artist> Artists { get; set; }
+
+        public DbSet<Album> Albums { get; set; }
     }
 }
