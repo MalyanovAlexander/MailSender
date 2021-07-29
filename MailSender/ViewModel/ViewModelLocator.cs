@@ -1,4 +1,3 @@
-using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using CommonServiceLocator;
 using MailSender.lib.Services;
@@ -8,7 +7,7 @@ using System;
 
 namespace MailSender.ViewModel
 {
-   
+
     public class ViewModelLocator
     {
         public ViewModelLocator()
@@ -21,7 +20,8 @@ namespace MailSender.ViewModel
 
             services
                 .TryRegister<IRecipientsDataProvider, LINQ2SQLRecipientsDataProvider>()
-                .TryRegister(() => new MailSenderDBDataContext());
+                .TryRegister(() => new MailSenderDBDataContext())
+                /*.TryRegister(() => new MailSenderDB())*/; //не видит пространство имён
 
             //services.TryRegister<IRecipientsDataProvider, InMemoryRecipientsDataProvider>()
             //.TryRegister<ISendersDataProvider, InMemorySendersDataProvider>()

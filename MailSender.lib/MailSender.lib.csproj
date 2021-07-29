@@ -61,6 +61,11 @@
   <ItemGroup>
     <Compile Include="DataBase.cs" />
     <Compile Include="Data\EF\MailSenderDB.cs" />
+    <Compile Include="Data\EF\Migrations\202107292131335_Initial.cs" />
+    <Compile Include="Data\EF\Migrations\202107292131335_Initial.designer.cs">
+      <DependentUpon>202107292131335_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Data\EF\Migrations\Configuration.cs" />
     <Compile Include="Data\LINQtoSQL\MailSenderDB.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -106,7 +111,11 @@
     <Compile Include="Service\StringEncoder.cs" />
     <Compile Include="Service\XMLSerializerPool.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Data\EF\Migrations\202107292131335_Initial.resx">
+      <DependentUpon>202107292131335_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="Data\LINQtoSQL\MailSenderDB.dbml">
