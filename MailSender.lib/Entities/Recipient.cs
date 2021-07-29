@@ -6,16 +6,16 @@ namespace MailSender.lib.Entities
 {
     public class Recipient : HumanEntity, IDataErrorInfo
     {
-        public override string Name
-        {
-            get => base.Name;
-            set
-            {
-                if (value is null) throw new ArgumentNullException(nameof(value));
-                if (value.Length <= 3) throw new ArgumentOutOfRangeException(nameof(value), "Имя должно быть не короче 3 символов");
-                base.Name = value;
-            }
-        }
+        //public override string Name
+        //{
+        //    get => base.Name;
+        //    set
+        //    {
+        //        if (value is null) throw new ArgumentNullException(nameof(value));
+        //        if (value.Length <= 3) throw new ArgumentOutOfRangeException(nameof(value), "Имя должно быть не короче 3 символов");
+        //        base.Name = value;
+        //    }
+        //}
 
         string IDataErrorInfo.this[string columnName]
         {
